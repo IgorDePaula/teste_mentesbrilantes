@@ -1,15 +1,15 @@
 class Stove {
     #button = null;
-    #firemonth = null;
+    #firemonth = [];
     #ovendoor = null;
-    #stoveLight = null;
+    #stoveLight = [];
 
     addButton(button) {
         this.#button = button;
     }
 
     addFiremonth(firemonth) {
-        this.#firemonth = firemonth;
+        this.#firemonth.push(firemonth);
     }
 
     addOvendoor(ovendoor) {
@@ -17,7 +17,7 @@ class Stove {
     }
 
     addStoveLight(stoveLight) {
-        this.#stoveLight = stoveLight;
+        this.#stoveLight.push(stoveLight)
     }
 
     getStoveLight() {

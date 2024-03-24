@@ -2,11 +2,26 @@ class Stove {
     #button = null;
     #firemonth = null;
     #ovendoor = null;
+    #stoveLight = null;
 
-    constructor(button, firemonth, ovendoor) {
+    addButton(button) {
         this.#button = button;
+    }
+
+    addFiremonth(firemonth) {
         this.#firemonth = firemonth;
+    }
+
+    addOvendoor(ovendoor) {
         this.#ovendoor = ovendoor;
+    }
+
+    addStoveLight(stoveLight) {
+        this.#stoveLight = stoveLight;
+    }
+
+    getStoveLight() {
+        return this.#stoveLight;
     }
 
     getButton() {

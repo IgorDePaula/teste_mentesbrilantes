@@ -1,11 +1,13 @@
-import Stove from "./Stove";
-import StoveLighter from "./StoveLighter";
-import Firemouth from "./Firemouth";
-import Lamp from "./Lamp";
-import OvenDoor from "./OvenDoor";
-import Button from "./Button";
+import Stove from "./Stove.js";
+import StoveLighter from "./StoveLighter.js";
+import Firemouth from "./Firemouth.js";
+import Lamp from "./Lamp.js";
+import OvenDoor from "./OvenDoor.js";
+import Button from "./Button.js";
+import Glass from "./Glass.js";
 
-export default {
+export {
+    Glass,
     StoveLighter,
     Button,
     Stove,

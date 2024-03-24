@@ -1,5 +1,6 @@
 class Lamp {
     #on = false;
+
     constructor(on = false) {
         this.#on = on;
     }

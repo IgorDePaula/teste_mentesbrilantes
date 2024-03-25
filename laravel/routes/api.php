@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\{StateController, CityController};
+use \App\Http\Controllers\{StateController, CityController, AddressController};
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +24,6 @@ Route::get('/state/{state}', [StateController::class, 'show']);
 
 Route::get('/city', [CityController::class, 'index']);
 Route::get('/city/{city}', [CityController::class, 'show']);
+
+Route::get('/address', [AddressController::class, 'index']);
+Route::get('/address/{address}', [AddressController::class, 'show']);

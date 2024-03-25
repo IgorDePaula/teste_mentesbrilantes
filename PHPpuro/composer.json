@@ -1,0 +1,8 @@
+{
+  "name": "igordepaula/phppuro",
+  "autoload": {
+    "psr-4": {
+      "MentesBrilhantes\\":"src/"
+    }
+  }
+}

@@ -20,4 +20,9 @@ class Address extends Model
     {
         return $this->belongsTo(State::class);
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

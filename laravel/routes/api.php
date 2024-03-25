@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\{StateController, CityController, AddressController};
+use \App\Http\Controllers\{StateController, CityController, AddressController, UserController};
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +27,9 @@ Route::get('/city/{city}', [CityController::class, 'show']);
 
 Route::get('/address', [AddressController::class, 'index']);
 Route::get('/address/{address}', [AddressController::class, 'show']);
+
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/{user}', [UserController::class, 'show']);
+Route::post('/user', [UserController::class, 'store']);
+Route::put('/user/{user}', [UserController::class, 'update']);
+Route::delete('/user/{user}', [UserController::class, 'destroy']);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all()->load('address', 'city', 'state');
+        return new JsonResponse(User::all()->load('address', 'city', 'state'), JsonResponse::HTTP_OK);
     }
 
     /**
@@ -22,7 +23,7 @@ class UserController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        return User::create($request->all());
+        return new JsonResponse(User::create($request->all()), JsonResponse::HTTP_CREATED);
     }
 
     /**
@@ -30,7 +31,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return $user->load('address', 'city', 'state');
+        return new JsonResponse($user->load('address', 'city', 'state'), JsonResponse::HTTP_OK);
     }
 
     /**
@@ -38,7 +39,7 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, User $user)
     {
-        return $user->update($request->all());
+        return new JsonResponse($user->update($request->all()), JsonResponse::HTTP_ACCEPTED);
     }
 
     /**
@@ -46,6 +47,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        return $user->delete();
+        return new JsonResponse($user->delete(), JsonResponse::HTTP_OK);
     }
 }

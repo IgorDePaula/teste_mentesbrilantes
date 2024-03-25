@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
     public function index()
     {
-        return City::all()->load('state');
+        return new JsonResponse(City::all()->load('state'), JsonResponse::HTTP_OK);
     }
 
     public function show(City $city)
     {
-        return $city->load('state');
+        return new JsonResponse($city->load('state'), JsonResponse::HTTP_OK);
     }
 }

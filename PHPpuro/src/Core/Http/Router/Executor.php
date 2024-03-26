@@ -9,7 +9,6 @@ class Executor
     private $rc = null;
     private $container = null;
     private $params = [];
-    private $mparams = [];
 
     public function getRc()
     {
@@ -56,7 +55,7 @@ class Executor
     public function prepareExecution($param, $index, $method)
     {
         $this->fillParameter(
-            $this->extractInfoParameters($method, $index), $this->mparams
+            $this->extractInfoParameters($method, $index), $param
         );
     }
 
@@ -79,12 +78,11 @@ class Executor
     function extractInfoParameters(\ReflectionMethod $method, $index)
     {
         $refParam = new \ReflectionParameter([$method->class, $method->name], $index);
-        return [$refParam->getType(), $refParam->getName()];
+        return [$refParam->getType()->getName(), $refParam->getName()];
     }
 
-    public function execute($methodName, $parameter = null)
+    public function execute($methodName)
     {
-        $this->mparams = $parameter;
         $method = $this->getMethod($methodName);
         $instance = $this->rc->newInstance();
         $params = $this->extractParamsOfMethod($methodName);

@@ -16,4 +16,11 @@ class State extends Model
     {
         return $this->pdo->query("SELECT * FROM states")->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function getById($id)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM states where id=:id");
+        $statement->execute([':id' => $id]);
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

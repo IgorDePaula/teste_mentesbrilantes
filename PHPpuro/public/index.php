@@ -13,5 +13,6 @@ $stateModel = new \MentesBrilhantes\App\Models\State($db['host'], $db['db'], $db
 $container->add('stateModel', $stateModel);
 
 $router->get('/state', "\MentesBrilhantes\App\Controllers\StateController@allStates");
+$router->get('/state/:state', "\MentesBrilhantes\App\Controllers\StateController@show");
 
 $router->run($container);

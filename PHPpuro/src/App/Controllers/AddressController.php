@@ -9,13 +9,13 @@ class AddressController extends Controller
 {
     public function allAddresses()
     {
-        $cityModel = $this->container->get('addressModel');
-        $this->json($cityModel->all());
+        $addressModel = $this->container->get('addressModel');
+        $this->json($addressModel->all());
     }
 
     public function showAddress(Request $request)
     {
-        $cityModel = $this->container->get('addressModel');
-        $this->json($cityModel->getById($request->address));
+        $addressModel = $this->container->get('addressModel');
+        $this->json($addressModel->getById($request->address));
     }
 }

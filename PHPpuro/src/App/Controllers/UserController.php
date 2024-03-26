@@ -39,4 +39,15 @@ class UserController extends Controller
             $this->json([], 500);
         }
     }
+
+    public function deleteUser(Request $request)
+    {
+        $userModel = $this->container->get('userModel');
+        $user = $userModel->delete($request->user);
+        if ($user > 0) {
+            $this->json([]);
+        } else {
+            $this->json([], 404);
+        }
+    }
 }

@@ -16,6 +16,14 @@ class User extends Model
         return $this->pdo->query($sql)->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function getById($id)
+    {
+        $sql = "SELECT * FROM users where id = :id";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute([':id' => $id]);
+        return $statement->fetch(\PDO::FETCH_ASSOC);
+    }
+
     public function create(array $data)
     {
         $sql = "INSERT INTO users (name, address_id, city_id, state_id)
@@ -61,11 +69,28 @@ class User extends Model
             ':address_id' => $data['address_id'],
             ':city_id' => $data['city_id'],
             ':state_id' => $data['state_id'],
-            ]);
-        if($result){
+        ]);
+        if ($result) {
             return $data['user'];
         }
         return false;
     }
 
+    public function delete($id)
+    {
+        $user = $this->getById($id);
+        if (isset($user['id'])) {
+
+            $sql = "DELETE from users where id = :id ";
+
+            $statement = $this->pdo->prepare($sql);
+            $result = $statement->execute([
+                ':id' => $id,
+            ]);
+            if ($result) {
+                return $id;
+            }
+        }
+        return false;
+    }
 }

@@ -10,7 +10,7 @@ class Request
     {
         $json = file_get_contents('php://input');
         $this->attrs = $attr;
-        $this->normalizeJsonInput(json_decode($json, true));
+        $this->normalizeJsonInput(json_decode(is_array($json) ? $json : '[]', true));
     }
 
     public function __get($name)

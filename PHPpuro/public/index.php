@@ -30,6 +30,7 @@ $router->get('/address/:address', "\MentesBrilhantes\App\Controllers\AddressCont
 $router->get('/user', "\MentesBrilhantes\App\Controllers\UserController@allUsers");
 $router->post('/user', "\MentesBrilhantes\App\Controllers\UserController@newUser");
 $router->put('/user/:user', "\MentesBrilhantes\App\Controllers\UserController@updateUser");
+$router->delete('/user/:user', "\MentesBrilhantes\App\Controllers\UserController@deleteUser");
 
 
 $router->run($container);

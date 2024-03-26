@@ -10,14 +10,19 @@ $router = new \MentesBrilhantes\Core\Http\Router\Router();
 
 $stateModel = new \MentesBrilhantes\App\Models\State($db['host'], $db['db'], $db['user'], $db['password']);
 $cityModel = new \MentesBrilhantes\App\Models\City($db['host'], $db['db'], $db['user'], $db['password']);
+$addressModel = new \MentesBrilhantes\App\Models\Address($db['host'], $db['db'], $db['user'], $db['password']);
 
 $container->add('stateModel', $stateModel);
 $container->add('cityModel', $cityModel);
+$container->add('addressModel', $addressModel);
 
 $router->get('/state', "\MentesBrilhantes\App\Controllers\StateController@allStates");
 $router->get('/state/:state', "\MentesBrilhantes\App\Controllers\StateController@show");
 
 $router->get('/city', "\MentesBrilhantes\App\Controllers\CityController@allCities");
 $router->get('/city/:city', "\MentesBrilhantes\App\Controllers\CityController@showCity");
+
+$router->get('/address', "\MentesBrilhantes\App\Controllers\AddressController@allAddresses");
+$router->get('/address/:address', "\MentesBrilhantes\App\Controllers\AddressController@showAddress");
 
 $router->run($container);

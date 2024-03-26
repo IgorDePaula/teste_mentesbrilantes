@@ -2,7 +2,7 @@
 
 namespace MentesBrilhantes\Core\Http\Router;
 
-class ExecutorInterator implements \Iterator
+class ExecutorIterator implements \Iterator
 {
     protected $elements = [];
 

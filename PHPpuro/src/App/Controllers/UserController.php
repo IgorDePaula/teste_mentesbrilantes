@@ -28,4 +28,15 @@ class UserController extends Controller
             $this->json([], 500);
         }
     }
+
+    public function updateUser(Request $request)
+    {
+        $userModel = $this->container->get('userModel');
+        $user = $userModel->update($request->all());
+        if ($user > 0) {
+            $this->json([], 202);
+        } else {
+            $this->json([], 500);
+        }
+    }
 }

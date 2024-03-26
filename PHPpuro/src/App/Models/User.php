@@ -28,9 +28,44 @@ class User extends Model
             ':state_id' => $data['state_id'],
         ]);
 
-        if($result){
+        if ($result) {
             $sql = 'Select * FROM users order by id limit 1';
             return $this->pdo->query($sql)->fetch(\PDO::FETCH_ASSOC);
         }
+        return 0;
     }
+
+    public function update(array $data)
+    {
+        $sql = "UPDATE users set ";
+        $parameters = [];
+        if (isset($data['name'])) {
+            $parameters[] = "name = :name ";
+        }
+        if (isset($data['address_id'])) {
+            $parameters[] = "address_id = :address_id ";
+        }
+        if (isset($data['city_id'])) {
+            $parameters[] = "city_id = :city_id ";
+        }
+        if (isset($data['state_id'])) {
+            $parameters[] = "state_id = :state_id ";
+        }
+        $parameters = implode(', ', $parameters);
+        $sql = $sql . $parameters . " where id = :id";
+
+        $statement = $this->pdo->prepare($sql);
+        $result = $statement->execute([
+            ':id' => $data['user'],
+            ':name' => $data['name'],
+            ':address_id' => $data['address_id'],
+            ':city_id' => $data['city_id'],
+            ':state_id' => $data['state_id'],
+            ]);
+        if($result){
+            return $data['user'];
+        }
+        return false;
+    }
+
 }

@@ -18,9 +18,19 @@ class Request
         return $this->attrs[":{$name}"];
     }
 
-    private function normalizeJsonInput(array $json){
+    private function normalizeJsonInput(array $json)
+    {
         foreach ($json as $key => $value) {
             $this->attrs[":{$key}"] = $value;
         }
+    }
+
+    public function all()
+    {
+        $array = [];
+        foreach ($this->attrs as $key => $value) {
+            $array[str_replace(':', '', $key)] = $value;
+        }
+        return $array;
     }
 }

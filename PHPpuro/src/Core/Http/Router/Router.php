@@ -8,7 +8,7 @@ use MentesBrilhantes\Core\Http\Request;
 class Router
 {
 
-    private $methods = ['GET', 'POST'];
+    private $methods = ['GET', 'POST', 'DELETE','PUT'];
     private $routes = [];
 
     public function __call($name, $args)

@@ -19,7 +19,7 @@ class Router
         }
     }
 
-    public function run(Container $di)
+    public function run(Container $container)
     {
         $found = false;
         $uriServer = $_SERVER['REQUEST_URI'];
@@ -31,7 +31,7 @@ class Router
                 $params = array_combine($ex2, $ex1);
 
                 $req = new Request($params != false ? $this->clear($params) : []);
-                $di->add(Request::class, $req);
+                $container->add(Request::class, $req);
                 $pattern = '/(:\w*)/';
                 $replace = array_filter(explode('/', $uriServer), function ($item) {
                     return !empty($item);
@@ -58,7 +58,7 @@ class Router
                         } else {
                             list($class, $action) = explode('@', $callable);
                             $ex = new Executor();
-                            $ex->setDi($di);
+                            $ex->setContainer($container);
                             $ex->setRc(new \ReflectionClass($class));
                             $ex->execute($action);
                         }

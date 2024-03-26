@@ -4,5 +4,8 @@
     "psr-4": {
       "MentesBrilhantes\\":"src/"
     }
+  },
+  "require": {
+    "ext-pdo": "*"
   }
 }

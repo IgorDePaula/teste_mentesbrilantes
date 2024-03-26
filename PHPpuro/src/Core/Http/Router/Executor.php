@@ -27,7 +27,7 @@ class Executor
         return $this->container;
     }
 
-    public function setDi(Container $container)
+    public function setContainer(Container $container)
     {
         $this->container = $container;
         return $this;
@@ -89,6 +89,7 @@ class Executor
         $instance = $this->rc->newInstance();
         $params = $this->extractParamsOfMethod($methodName);
         array_walk($params, [$this, 'prepareExecution'], $method);
+        $instance->setContainer($this->container);
         return $method->invokeArgs($instance, $this->params);
     }
 

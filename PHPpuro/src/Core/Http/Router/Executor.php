@@ -32,26 +32,6 @@ class Executor
         return $this;
     }
 
-    function extractParamsOfMethods()
-    {
-        $methods = $this->getMethods();
-        $params = new ExecutorCompostIterator();
-        foreach ($methods as $method) {
-            $params->add($method->name, $method->getParameters());
-        }
-        return $params;
-    }
-
-    function getMethods()
-    {
-        return $this->rc->getMethods(\ReflectionMethod::IS_PUBLIC);
-    }
-
-    function notEmpty($item)
-    {
-        return !empty($item);
-    }
-
     public function prepareExecution($param, $index, $method)
     {
         $this->fillParameter(

@@ -3,6 +3,7 @@
 namespace MentesBrilhantes\App\Controllers;
 
 use MentesBrilhantes\Core\Controller;
+use MentesBrilhantes\Core\Http\Request;
 
 class UserController extends Controller
 {
@@ -10,5 +11,10 @@ class UserController extends Controller
     {
         $userModel = $this->container->get('userModel');
         $this->json($userModel->all());
+    }
+
+    public function newUser(Request $request)
+    {
+
     }
 }

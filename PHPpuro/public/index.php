@@ -28,6 +28,7 @@ $router->get('/address', "\MentesBrilhantes\App\Controllers\AddressController@al
 $router->get('/address/:address', "\MentesBrilhantes\App\Controllers\AddressController@showAddress");
 
 $router->get('/user', "\MentesBrilhantes\App\Controllers\UserController@allUsers");
+$router->post('/user', "\MentesBrilhantes\App\Controllers\UserController@newUser");
 
 
 $router->run($container);

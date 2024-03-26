@@ -21,6 +21,6 @@ class State extends Model
     {
         $statement = $this->pdo->prepare("SELECT * FROM states where id=:id");
         $statement->execute([':id' => $id]);
-        return $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $statement->fetchAll(\PDO::FETCH_ASSOC)[0];
     }
 }
